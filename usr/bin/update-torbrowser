@@ -1822,6 +1822,11 @@ tb_install() {
 
    output_echo_only "INFO: Moving temporary folder $tb_extract_temp_folder to $tb_browser_folder."
    mv "$tb_extract_temp_folder" "$tb_browser_folder"
+
+   if [ "$tb_bin" = "i2pbrowser" ]; then
+      rm -rf "$tb_home_folder/profile.i2p"
+      cp -r /var/lib/tb-profile-i2p/profile.i2p "$tb_home_folder/profile.i2p"
+   fi
 }
 
 tb_cleanup() {
